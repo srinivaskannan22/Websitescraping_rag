@@ -1,4 +1,4 @@
-from main import notepad
+from main import RAG
 import streamlit as st
 
 st.title('Webbase Rag application')
@@ -7,8 +7,8 @@ prompt=st.text_input(label='what is your answer')
 button=st.button(label='onclick')
 
 if url and prompt and button:
-    note=notepad(url)
-    answer=note.rag(prompt)
+    rag=RAG(url)
+    answer=rag.rag(prompt)
     st.success(answer['content'])
     st.balloons()
 

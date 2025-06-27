@@ -10,12 +10,12 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from huggingface_hub import InferenceClient
 load_dotenv()
 
-class notepad:
+class RAG:
     
     def __init__(self,pageurl):
         self.pageurl=pageurl
         pc = Pinecone(api_key=os.getenv('PINECONE_API'))
-        index = pc.Index("rag3")
+        index = pc.Index(os.getenv('PINECONE_INDEX'))
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         self.vector_stores = PineconeVectorStore(index=index, embedding=embeddings)
     
